@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CareScout AI - Meadowbrook Details</title>
+    <title>CareScout AI - Facility Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -18,42 +18,89 @@
         </a>
 
         <div class="absolute left-1/2 -translate-x-1/2 hidden md:flex gap-10 text-sm font-medium text-slate-600">
-            <a href="search.html" class="hover:text-green-600">Search</a>
-            <a href="learn.html" class="hover:text-green-600">Learn</a>
-            <a href="results.html" class="hover:text-green-600">Results</a>
-            <a href="compare.html" class="hover:text-green-600">Compare</a>
+            <a href="search.html" class="hover:text-[#669966]">Search</a>
+            <a href="learn.html" class="hover:text-[#669966]">Learn</a>
+            <a href="compare.html" class="hover:text-[#669966]">Compare</a>
         </div>
     </nav>
 
-    <!-- HERO (MATCHES HOME/COMPARE) -->
+    <!-- HERO: facility name, big match score, wish list summary (filled by script) -->
     <header class="bg-[#669966] text-white py-16">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-8 items-center">
-            <div>
-                <span class="text-white/80 uppercase text-xs font-bold tracking-widest">Details</span>
-                <h1 class="text-4xl font-bold mt-3 mb-4">Meadowbrook Care Center</h1>
-                <!-- Fake match score -->
-                <div class="inline-flex items-center gap-3 mb-6 px-4 py-2 bg-white/15 rounded-xl">
-                    <span class="text-3xl font-bold">87%</span>
-                    <span class="text-white/90 text-sm font-medium">match to your search</span>
+        <div class="max-w-7xl mx-auto px-6">
+            <span class="text-white/80 uppercase text-xs font-bold tracking-widest">Details</span>
+            <h1 id="details-facility-name" class="text-4xl font-bold mt-3 mb-8">—</h1>
+
+            <div class="grid md:grid-cols-2 gap-10 items-start">
+                <div>
+                    <div class="mb-6">
+                        <span class="text-white/90 text-sm font-semibold uppercase tracking-wide">Match</span>
+                        <p id="details-match-pct" class="text-[5rem] md:text-[6.5rem] font-bold leading-none mt-1">—%</p>
+                        <p class="text-white/90 text-sm mt-2">match to your priorities</p>
+                    </div>
+                    <p id="details-wish-list-text" class="text-white/95 text-base max-w-lg mb-6">
+                        — 
+                    </p>
+                    <div id="details-facility-tags" class="flex flex-wrap gap-2"></div>
                 </div>
-                <div class="flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-wide text-white/90 mb-6">
-                    <span class="border border-white/50 px-3 py-1 rounded-full">Long term care</span>
-                    <span class="border border-white/50 px-3 py-1 rounded-full">Skilled Nursing</span>
-                    <span class="border border-white/50 px-3 py-1 rounded-full">Rehabilitation Services</span>
+
+                <div class="space-y-4 md:space-y-5">
+                    <p id="details-description" class="text-white/90 text-sm max-w-xl">—</p>
+                    <div class="rounded-xl overflow-hidden shadow-lg h-44 md:h-56">
+                        <img id="details-hero-image" src="" alt="" class="w-full h-full object-cover">
+                    </div>
                 </div>
             </div>
-
-            <div class="rounded-xl overflow-hidden shadow-lg h-48 md:h-64">
-                <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800" alt="Meadowbrook Care Center facility" class="w-full h-full object-cover">
-            </div>
-        </div>
-
-        <div class="max-w-7xl mx-auto px-6 mt-6">
-            <p class="text-white/90 text-sm max-w-2xl">
-                Located in Springfield, this facility serves the region with 120 licensed beds. The center maintains a mixed record on staffing consistency and safety metrics that warrant careful review.
-            </p>
         </div>
     </header>
+
+    <!-- How it stacks up: wish list vs. what facility has / doesn't have -->
+    <section class="bg-[#669966]/10 py-16 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-2">Match</h2>
+                <h3 class="text-2xl md:text-3xl font-bold text-slate-900">How it stacks up</h3>
+                <p id="details-stacks-subtitle" class="text-slate-600 mt-2">—</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6 md:p-8">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i class="fa-solid fa-circle-check text-[#669966] text-xl"></i>
+                        <h4 class="font-bold text-lg text-slate-900">What you're looking for</h4>
+                    </div>
+                    <p id="details-priorities-summary" class="text-slate-600 text-sm mb-6">—</p>
+                    <ul id="details-priorities-list" class="space-y-3"></ul>
+                    <a href="search.html" class="inline-flex items-center gap-1 mt-6 text-[#669966] font-semibold text-sm hover:underline">
+                        Expand <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6 md:p-8">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i class="fa-solid fa-list text-[#669966] text-xl"></i>
+                        <h4 class="font-bold text-lg text-slate-900">The details that matter</h4>
+                    </div>
+                    <p class="text-slate-600 text-sm mb-6">
+                        What this facility has and doesn't have from your wish list.
+                    </p>
+                    <div class="overflow-hidden rounded-lg border border-slate-200">
+                        <table class="w-full text-left text-sm">
+                            <thead>
+                                <tr class="bg-slate-100 border-b border-slate-200">
+                                    <th class="px-4 py-3 font-semibold text-slate-900">Has</th>
+                                    <th class="px-4 py-3 font-semibold text-slate-900 border-l border-slate-200">Doesn't have</th>
+                                </tr>
+                            </thead>
+                            <tbody id="details-has-dont-have-tbody" class="divide-y divide-slate-200"></tbody>
+                        </table>
+                    </div>
+                    <a href="search.html" class="inline-flex items-center gap-1 mt-6 text-[#669966] font-semibold text-sm hover:underline">
+                        Back to search <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="bg-[#669966]/15 py-16 px-6">
         <div class="max-w-7xl mx-auto">
@@ -64,34 +111,34 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-slate-200 p-6 rounded-xl border border-slate-300 shadow-sm">
-                    <div class="h-32 bg-slate-300 rounded-lg mb-4 flex items-center justify-center">
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="h-32 bg-slate-100 rounded-lg mb-4 flex items-center justify-center">
                         <i class="fa-regular fa-calendar-xmark text-slate-500 text-3xl"></i>
                     </div>
                     <span class="text-xs font-bold text-slate-500 uppercase">Concern</span>
                     <h4 class="font-bold text-lg text-slate-900 mb-2">Staffing on weekends</h4>
                     <p class="text-sm text-slate-700 mb-4">Reduced nursing presence during critical days.</p>
-                    <a href="#" class="text-green-600 text-sm font-medium hover:underline">Learn &rarr;</a>
+                    <a href="#" class="text-[#669966] text-sm font-medium hover:underline">Learn &rarr;</a>
                 </div>
 
-                <div class="bg-slate-200 p-6 rounded-xl border border-slate-300 shadow-sm">
-                    <div class="h-32 bg-slate-300 rounded-lg mb-4 flex items-center justify-center">
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="h-32 bg-slate-100 rounded-lg mb-4 flex items-center justify-center">
                         <i class="fa-solid fa-shield-virus text-slate-500 text-3xl"></i>
                     </div>
                     <span class="text-xs font-bold text-slate-500 uppercase">Strength</span>
                     <h4 class="font-bold text-lg text-slate-900 mb-2">Infection control measures</h4>
                     <p class="text-sm text-slate-700 mb-4">Consistent protocols maintained across all units.</p>
-                    <a href="#" class="text-green-600 text-sm font-medium hover:underline">Learn &rarr;</a>
+                    <a href="#" class="text-[#669966] text-sm font-medium hover:underline">Learn &rarr;</a>
                 </div>
 
-                <div class="bg-slate-200 p-6 rounded-xl border border-slate-300 shadow-sm">
-                    <div class="h-32 bg-slate-300 rounded-lg mb-4 flex items-center justify-center">
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <div class="h-32 bg-slate-100 rounded-lg mb-4 flex items-center justify-center">
                         <i class="fa-solid fa-file-medical text-slate-500 text-3xl"></i>
                     </div>
                     <span class="text-xs font-bold text-slate-500 uppercase">Trend</span>
-                    <h4 class="font-bold text-lg text-slate-900 mb-2">Safety citations show declining trajectory</h4>
-                    <p class="text-sm text-slate-700 mb-4">Recent inspections reveal worsening compliance issues.</p>
-                    <a href="#" class="text-green-600 text-sm font-medium hover:underline">Learn &rarr;</a>
+                    <h4 class="font-bold text-lg text-slate-900 mb-2">Safety citations</h4>
+                    <p class="text-sm text-slate-700 mb-4">Recent inspections reveal compliance patterns worth reviewing.</p>
+                    <a href="#" class="text-[#669966] text-sm font-medium hover:underline">Learn &rarr;</a>
                 </div>
             </div>
         </div>
@@ -102,8 +149,8 @@
             <div class="max-w-xl">
                 <h2 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-2">Numbers</h2>
                 <h3 class="text-3xl font-bold text-slate-900 mb-4">The metrics that matter most here</h3>
-                <p class="text-slate-600 text-sm">
-                    Meadowbrook operates with a staff-to-resident ratio that fluctuates seasonally. Weekend coverage drops noticeably, affecting the consistency of care delivery. These patterns emerge clearly when you examine the payroll data across twelve months.
+                <p id="details-numbers-intro" class="text-slate-600 text-sm">
+                    This facility operates with a staff-to-resident ratio that fluctuates seasonally. Weekend coverage drops noticeably, affecting the consistency of care delivery. These patterns emerge clearly when you examine the payroll data across twelve months.
                 </p>
             </div>
 
@@ -157,6 +204,112 @@
             </div>
         </div>
     </section>
+
+    <script>
+    // Same 6 facilities as search.html (needs = tags for details logic)
+    var FACILITIES = [
+        { id: 'meadowbrook', name: 'Meadowbrook Care Center', match: 92, needs: ['Memory Care', 'Skilled Nursing', 'Infection Control Strong'], image: 'https://images.unsplash.com/photo-1626315869436-d6781ba69d6e?w=800', location: 'Houston', description: '1201 Willow Park Dr, Houston, TX. Strong infection control, but weekend staffing dips slightly.' },
+        { id: 'riverside', name: 'Riverside Living', match: 78, needs: ['Rehabilitation', 'Skilled Nursing'], image: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=800', location: 'Austin', description: '455 Riverfront Ave, Austin, TX. Great rehab program, average staffing stability.' },
+        { id: 'sunset', name: 'Sunset Gardens', match: 64, needs: ['Assisted Living'], image: 'https://images.unsplash.com/photo-1586773860383-dab5f3bc1bcc?w=800', location: 'Dallas', description: '88 Sunset Blvd, Dallas, TX. Clean facility, limited skilled nursing coverage.' },
+        { id: 'hillside', name: 'Hillside Manor', match: 73, needs: ['Skilled Nursing', 'Infection Control Strong'], image: 'https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=800', location: 'San Antonio', description: '210 Ridgeway Ln, San Antonio, TX. Solid clinical team, higher citation count last year.' },
+        { id: 'oakwood', name: 'Oakwood Senior', match: 86, needs: ['Memory Care', 'Assisted Living'], image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800', location: 'College Station', description: '44 Oak Trail, College Station, TX. Good overall performance with consistent staffing.' },
+        { id: 'pinecrest', name: 'Pinecrest Home', match: 81, needs: ['Hospice', 'Skilled Nursing'], image: 'https://images.unsplash.com/photo-1631507623104-aa66944677aa?w=800', location: 'Chicago', description: '900 Pine St, Chicago, IL. Strong hospice services, excellent family communication.' }
+    ];
+
+    function getDetailsParams() {
+        var params = new URLSearchParams(window.location.search);
+        var facilityId = (params.get('facility') || '').trim();
+        var priorities = params.get('priorities') ? params.get('priorities').split(',').map(function(p) { return p.trim(); }).filter(Boolean) : [];
+        return { facilityId: facilityId, priorities: priorities };
+    }
+
+    function renderDetails() {
+        var params = getDetailsParams();
+        if (!params.facilityId) {
+            window.location.href = 'search.html';
+            return;
+        }
+        var facility = FACILITIES.filter(function(f) { return f.id === params.facilityId; })[0];
+        if (!facility) {
+            window.location.href = 'search.html';
+            return;
+        }
+
+        document.title = 'CareScout AI - ' + facility.name;
+        document.getElementById('details-facility-name').textContent = facility.name;
+        document.getElementById('details-description').textContent = facility.description;
+        document.getElementById('details-hero-image').src = facility.image;
+        document.getElementById('details-hero-image').alt = facility.name;
+
+        var numbersIntro = document.getElementById('details-numbers-intro');
+        if (numbersIntro) numbersIntro.textContent = facility.name + ' operates with a staff-to-resident ratio that fluctuates seasonally. Weekend coverage drops noticeably, affecting the consistency of care delivery. These patterns emerge clearly when you examine the payroll data across twelve months.';
+
+        var priorities = params.priorities;
+        var matchPct = 0;
+        var hasList = [];
+        var dontHaveList = [];
+        if (priorities.length > 0) {
+            priorities.forEach(function(p) {
+                if (facility.needs && facility.needs.indexOf(p) !== -1) {
+                    hasList.push(p);
+                } else {
+                    dontHaveList.push(p);
+                }
+            });
+            matchPct = Math.round((hasList.length / priorities.length) * 100);
+        } else {
+            // No priorities passed in URL: show a per-facility "fake" match score.
+            matchPct = (typeof facility.match === 'number') ? facility.match : 80;
+        }
+
+        document.getElementById('details-match-pct').textContent = matchPct + '%';
+
+        var wishText = document.getElementById('details-wish-list-text');
+        if (priorities.length > 0) {
+            var strongParts = priorities.map(function(p) { return '<strong>' + p + '</strong>'; });
+            wishText.innerHTML = "I'm looking for a nursing home where they have " + strongParts.join(' and ') + '.';
+        } else {
+            wishText.textContent = "This is a demo match score for " + facility.name + ". Select needs on Search to generate a personalized match.";
+        }
+
+        var tagsEl = document.getElementById('details-facility-tags');
+        tagsEl.innerHTML = (facility.needs || []).map(function(n) {
+            return '<span class="border border-white/50 px-3 py-1.5 rounded-full text-sm">' + n + '</span>';
+        }).join('');
+
+        document.getElementById('details-stacks-subtitle').textContent = 'See what ' + facility.name + ' has and doesn\'t have against your priorities.';
+
+        var summaryEl = document.getElementById('details-priorities-summary');
+        if (priorities.length > 0) {
+            summaryEl.textContent = priorities.join(', ') + ' are your priorities.';
+        } else {
+            summaryEl.textContent = 'Add your priorities from Search to see how this facility matches.';
+        }
+
+        var listEl = document.getElementById('details-priorities-list');
+        listEl.innerHTML = priorities.map(function(p) {
+            return '<li class="flex items-center gap-2 text-slate-800"><i class="fa-solid fa-circle-check text-[#669966] w-5"></i><span>' + p + '</span></li>';
+        }).join('');
+
+        var tbody = document.getElementById('details-has-dont-have-tbody');
+        var maxRows = Math.max(hasList.length, dontHaveList.length, 1);
+        var rows = [];
+        for (var i = 0; i < maxRows; i++) {
+            var has = hasList[i];
+            var dont = dontHaveList[i];
+            var hasCell = has
+                ? '<td class="px-4 py-3 text-slate-800"><span class="flex items-center gap-2"><i class="fa-solid fa-check text-[#669966]"></i>' + has + '</span></td>'
+                : '<td class="px-4 py-3 text-slate-600">—</td>';
+            var dontCell = dont
+                ? '<td class="px-4 py-3 text-slate-800 border-l border-slate-200"><span class="flex items-center gap-2"><i class="fa-solid fa-xmark text-slate-400"></i>' + dont + '</span></td>'
+                : '<td class="px-4 py-3 text-slate-600 border-l border-slate-200">—</td>';
+            rows.push('<tr>' + hasCell + dontCell + '</tr>');
+        }
+        tbody.innerHTML = rows.join('');
+    }
+
+    renderDetails();
+    </script>
 
 </body>
 </html>

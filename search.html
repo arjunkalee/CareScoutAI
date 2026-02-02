@@ -8,6 +8,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>body{font-family:'Inter',sans-serif;}</style>
+  <!-- no head script needed -->
 </head>
 
 <body class="bg-white text-slate-800">
@@ -19,10 +20,9 @@
     </a>
 
     <div class="absolute left-1/2 -translate-x-1/2 hidden md:flex gap-10 text-sm font-medium text-slate-600">
-      <a href="search.html" class="hover:text-green-600">Search</a>
-      <a href="learn.html" class="hover:text-green-600">Learn</a>
-      <a href="results.html" class="hover:text-green-600">Results</a>
-      <a href="compare.html" class="hover:text-green-600">Compare</a>
+      <a href="search.html" class="hover:text-[#669966]">Search</a>
+      <a href="learn.html" class="hover:text-[#669966]">Learn</a>
+      <a href="compare.html" class="hover:text-[#669966]">Compare</a>
     </div>
   </nav>
 
@@ -49,6 +49,10 @@
           <button type="button" id="tab-needs"
                   class="px-4 py-2 rounded-lg font-semibold text-sm bg-slate-300 text-slate-800 hover:bg-slate-400 transition">
             By needs
+          </button>
+          <button type="button" id="tab-all"
+                  class="px-4 py-2 rounded-lg font-semibold text-sm bg-slate-300 text-slate-800 hover:bg-slate-400 transition">
+            All results
           </button>
         </div>
 
@@ -148,129 +152,319 @@
             </div>
 
             <p class="text-xs text-slate-600 mt-3">
-              Optional: you can also combine with distance later on the Results page.
+              Results appear below.
+            </p>
+          </div>
+        </div>
+
+        <!-- ALL RESULTS PANEL -->
+        <div id="panel-all" class="text-left hidden">
+          <div class="bg-slate-300 rounded-lg p-4">
+            <div class="flex items-center gap-2 mb-2">
+              <i class="fa-solid fa-list text-green-600"></i>
+              <h3 class="font-bold text-slate-900">All facilities</h3>
+            </div>
+            <p class="text-sm text-slate-700">
+              Showing all 6 demo facilities below.
             </p>
           </div>
         </div>
 
       </div>
 
-      <p class="text-xs text-white/80 mt-4">Demo mode: results are based on 6 hardcoded facilities.</p>
+      <p class="text-xs text-white/80 mt-4">Demo mode: results are based on 6 facilities.</p>
 
-      <!-- CARE TYPE TILES (under search) -->
-      <div class="mt-10 text-center max-w-4xl mx-auto">
-        <p class="text-white/90 text-sm font-semibold mb-4">What are you looking for?</p>
-        <div class="flex flex-wrap justify-center gap-3" id="care-type-tiles">
-          <button type="button" class="care-tile px-4 py-2.5 rounded-lg text-sm font-medium border-2 border-white/50 text-white hover:bg-white/10 transition" data-care="Memory Care">Memory Care</button>
-          <button type="button" class="care-tile px-4 py-2.5 rounded-lg text-sm font-medium border-2 border-white/50 text-white hover:bg-white/10 transition" data-care="Rehabilitation">Rehabilitation</button>
-          <button type="button" class="care-tile px-4 py-2.5 rounded-lg text-sm font-medium border-2 border-white/50 text-white hover:bg-white/10 transition" data-care="Skilled Nursing">Skilled Nursing</button>
-          <button type="button" class="care-tile px-4 py-2.5 rounded-lg text-sm font-medium border-2 border-white/50 text-white hover:bg-white/10 transition" data-care="Assisted Living">Assisted Living</button>
-          <button type="button" class="care-tile px-4 py-2.5 rounded-lg text-sm font-medium border-2 border-white/50 text-white hover:bg-white/10 transition" data-care="Hospice">Hospice</button>
-          <button type="button" class="care-tile px-4 py-2.5 rounded-lg text-sm font-medium border-2 border-white/50 text-white hover:bg-white/10 transition" data-care="Infection Control Strong">Strong infection control</button>
-        </div>
-      </div>
+      <!-- removed: show-all dropdown button (now a tab) -->
     </div>
   </header>
 
-  <!-- REST OF PAGE (KEEPING CONTENT) -->
-  <section class="max-w-7xl mx-auto px-6 py-20">
+  <!-- RESULTS: 6 hardcoded hospitals (always in DOM, hidden by default) -->
+  <section id="search-results-section" class="max-w-7xl mx-auto px-6 py-16 border-t border-slate-200 hidden">
     <div class="text-center mb-12">
-      <h2 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-2">How it works</h2>
-      <h3 class="text-2xl font-bold text-slate-900 mt-2">Search your way</h3>
-      <p class="text-slate-600 mt-2">Use location, name, or care needs above—and select any care types you want below the search.</p>
+      <h2 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-2">Facilities</h2>
+      <h3 class="text-2xl font-bold text-slate-900">Results</h3>
+      <p class="text-slate-600 mt-2" id="search-results-subtitle">Showing all 6 facilities in the database.</p>
+    </div>
+    <div id="search-results-container" class="grid md:grid-cols-3 gap-8">
+      <!-- 1. Meadowbrook Care Center -->
+      <div class="facility-card bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200 p-6 flex flex-col items-center text-center" data-facility-id="meadowbrook" data-facility-name="Meadowbrook Care Center" data-facility-tags="Memory Care|Skilled Nursing|Infection Control Strong">
+        <div class="w-full h-40 rounded-lg mb-4 overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1626315869436-d6781ba69d6e?w=500" alt="Meadowbrook Care Center" class="w-full h-full object-cover"></div>
+        <h3 class="font-bold text-lg text-slate-900">Meadowbrook Care Center</h3>
+        <span class="text-xs text-slate-600 mb-2">Memory Care</span>
+        <div class="mb-2"><span class="text-xs font-bold uppercase px-3 py-1 rounded-full text-green-600 bg-green-100">Good</span></div>
+        <p class="text-sm text-slate-600 mb-2"><i class="fa-solid fa-location-dot text-[#669966] mr-1"></i>1201 Willow Park Dr, Houston, TX</p>
+        <div class="flex flex-wrap justify-center gap-2 mb-4"><span class="text-[11px] font-semibold px-2 py-1 rounded-full bg-slate-200 text-slate-800">Memory Care</span><span class="text-[11px] font-semibold px-2 py-1 rounded-full bg-slate-200 text-slate-800">Skilled Nursing</span><span class="text-[11px] font-semibold px-2 py-1 rounded-full bg-slate-200 text-slate-800">Infection Control Strong</span></div>
+        <p class="text-slate-600 text-sm mb-4">Strong infection control, but weekend staffing dips slightly.</p>
+        <a href="details.html?facility=meadowbrook" class="text-sm font-medium text-slate-900 border-b border-slate-500 pb-0.5 hover:border-slate-900 transition">View details</a>
+      </div>
+      <!-- 2. Riverside Living -->
+      <div class="facility-card bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200 p-6 flex flex-col items-center text-center" data-facility-id="riverside" data-facility-name="Riverside Living" data-facility-tags="Rehabilitation|Skilled Nursing">
+        <div class="w-full h-40 rounded-lg mb-4 overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=500" alt="Riverside Living" class="w-full h-full object-cover"></div>
+        <h3 class="font-bold text-lg text-slate-900">Riverside Living</h3>
+        <span class="text-xs text-slate-600 mb-2">Rehabilitation</span>
+        <div class="mb-2"><span class="text-xs font-bold uppercase px-3 py-1 rounded-full text-yellow-700 bg-yellow-100">Fair</span></div>
+        <p class="text-sm text-slate-600 mb-2"><i class="fa-solid fa-location-dot text-[#669966] mr-1"></i>455 Riverfront Ave, Austin, TX</p>
+        <div class="flex flex-wrap justify-center gap-2 mb-4"><span class="text-[11px] font-semibold px-2 py-1 rounded-full bg-slate-200 text-slate-800">Rehabilitation</span><span class="text-[11px] font-semibold px-2 py-1 rounded-full bg-slate-200 text-slate-800">Skilled Nursing</span></div>
+        <p class="text-slate-600 text-sm mb-4">Great rehab program, average staffing stability.</p>
+        <a href="details.html?facility=riverside" class="text-sm font-medium text-slate-900 border-b border-slate-500 pb-0.5 hover:border-slate-900 transition">View details</a>
+      </div>
+      <!-- 3. Sunset Gardens -->
+      <div class="facility-card bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200 p-6 flex flex-col items-center text-center" data-facility-id="sunset" data-facility-name="Sunset Gardens" data-facility-tags="Assisted Living">
+        <div class="w-full h-40 rounded-lg mb-4 overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1586773860383-dab5f3bc1bcc?w=500" alt="Sunset Gardens" class="w-full h-full object-cover"></div>
+        <h3 class="font-bold text-lg text-slate-900">Sunset Gardens</h3>
+        <span class="text-xs text-slate-600 mb-2">Assisted Living</span>
+        <div class="mb-2"><span class="text-xs font-bold uppercase px-3 py-1 rounded-full text-orange-700 bg-orange-100">Review</span></div>
+        <p class="text-sm text-slate-600 mb-2"><i class="fa-solid fa-location-dot text-[#669966] mr-1"></i>88 Sunset Blvd, Dallas, TX</p>
+        <div class="flex flex-wrap justify-center gap-2 mb-4"><span class="text-[11px] font-semibold px-2 py-1 rounded-full bg-slate-200 text-slate-800">Assisted Living</span></div>
+        <p class="text-slate-600 text-sm mb-4">Clean facility, limited skilled nursing coverage.</p>
+        <a href="details.html?facility=sunset" class="text-sm font-medium text-slate-900 border-b border-slate-500 pb-0.5 hover:border-slate-900 transition">View details</a>
+      </div>
+      <!-- 4. Hillside Manor -->
+      <div class="facility-card bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200 p-6 flex flex-col items-center text-center" data-facility-id="hillside" data-facility-name="Hillside Manor" data-facility-tags="Skilled Nursing|Infection Control Strong">
+        <div class="w-full h-40 rounded-lg mb-4 overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=500" alt="Hillside Manor" class="w-full h-full object-cover"></div>
+        <h3 class="font-bold text-lg text-slate-900">Hillside Manor</h3>
+        <span class="text-xs text-slate-600 mb-2">Skilled Nursing</span>
+        <div class="mb-2"><span class="text-xs font-bold uppercase px-3 py-1 rounded-full text-yellow-700 bg-yellow-100">Fair</span></div>
+        <p class="text-sm text-slate-600 mb-2"><i class="fa-solid fa-location-dot text-[#669966] mr-1"></i>210 Ridgeway Ln, San Antonio, TX</p>
+        <div class="flex flex-wrap justify-center gap-2 mb-4"><span class="text-[11px] font-semibold px-2 py-1 rounded-full bg-slate-200 text-slate-800">Skilled Nursing</span><span class="text-[11px] font-semibold px-2 py-1 rounded-full bg-slate-200 text-slate-800">Infection Control Strong</span></div>
+        <p class="text-slate-600 text-sm mb-4">Solid clinical team, higher citation count last year.</p>
+        <a href="details.html?facility=hillside" class="text-sm font-medium text-slate-900 border-b border-slate-500 pb-0.5 hover:border-slate-900 transition">View details</a>
+      </div>
+      <!-- 5. Oakwood Senior -->
+      <div class="facility-card bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200 p-6 flex flex-col items-center text-center" data-facility-id="oakwood" data-facility-name="Oakwood Senior" data-facility-tags="Memory Care|Assisted Living">
+        <div class="w-full h-40 rounded-lg mb-4 overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=500" alt="Oakwood Senior" class="w-full h-full object-cover"></div>
+        <h3 class="font-bold text-lg text-slate-900">Oakwood Senior</h3>
+        <span class="text-xs text-slate-600 mb-2">Memory Care</span>
+        <div class="mb-2"><span class="text-xs font-bold uppercase px-3 py-1 rounded-full text-green-600 bg-green-100">Good</span></div>
+        <p class="text-sm text-slate-600 mb-2"><i class="fa-solid fa-location-dot text-[#669966] mr-1"></i>44 Oak Trail, College Station, TX</p>
+        <div class="flex flex-wrap justify-center gap-2 mb-4"><span class="text-[11px] font-semibold px-2 py-1 rounded-full bg-slate-200 text-slate-800">Memory Care</span><span class="text-[11px] font-semibold px-2 py-1 rounded-full bg-slate-200 text-slate-800">Assisted Living</span></div>
+        <p class="text-slate-600 text-sm mb-4">Good overall performance with consistent staffing.</p>
+        <a href="details.html?facility=oakwood" class="text-sm font-medium text-slate-900 border-b border-slate-500 pb-0.5 hover:border-slate-900 transition">View details</a>
+      </div>
+      <!-- 6. Pinecrest Home -->
+      <div class="facility-card bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200 p-6 flex flex-col items-center text-center" data-facility-id="pinecrest" data-facility-name="Pinecrest Home" data-facility-tags="Hospice|Skilled Nursing">
+        <div class="w-full h-40 rounded-lg mb-4 overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1631507623104-aa66944677aa?w=500" alt="Pinecrest Home" class="w-full h-full object-cover"></div>
+        <h3 class="font-bold text-lg text-slate-900">Pinecrest Home</h3>
+        <span class="text-xs text-slate-600 mb-2">Hospice</span>
+        <div class="mb-2"><span class="text-xs font-bold uppercase px-3 py-1 rounded-full text-green-600 bg-green-100">Good</span></div>
+        <p class="text-sm text-slate-600 mb-2"><i class="fa-solid fa-location-dot text-[#669966] mr-1"></i>900 Pine St, Chicago, IL</p>
+        <div class="flex flex-wrap justify-center gap-2 mb-4"><span class="text-[11px] font-semibold px-2 py-1 rounded-full bg-slate-200 text-slate-800">Hospice</span><span class="text-[11px] font-semibold px-2 py-1 rounded-full bg-slate-200 text-slate-800">Skilled Nursing</span></div>
+        <p class="text-slate-600 text-sm mb-4">Strong hospice services, excellent family communication.</p>
+        <a href="details.html?facility=pinecrest" class="text-sm font-medium text-slate-900 border-b border-slate-500 pb-0.5 hover:border-slate-900 transition">View details</a>
+      </div>
+    </div>
+    <div id="search-no-results" class="hidden text-center py-16">
+      <p class="text-slate-600 text-lg mb-4">No facilities match your search.</p>
+      <button type="button" id="btn-clear-results" class="text-[#669966] font-semibold hover:underline">Show all</button>
     </div>
   </section>
 
   <script>
-    // Tab switching: Closest to me, By name, By needs
-    var tabActive = 'tab-near';
-    var tabClassActive = 'bg-green-600 text-white hover:bg-green-700';
-    var tabClassInactive = 'bg-slate-300 text-slate-800 hover:bg-slate-400';
+    
+    // Filter hardcoded .facility-card elements by name/needs; Show all reveals all and scrolls
+    function applyFilter(nameQuery, needsList) {
+      var subtitle = document.getElementById('search-results-subtitle');
+      var container = document.getElementById('search-results-container');
+      var noResults = document.getElementById('search-no-results');
+      var cards = document.querySelectorAll('.facility-card');
+      var visibleCount = 0;
+      if (subtitle) {
+        if (nameQuery) subtitle.textContent = 'Facilities whose name contains "' + nameQuery + '".';
+        else if (needsList && needsList.length > 0) subtitle.textContent = 'Facilities that offer at least one of: ' + needsList.join(', ') + '.';
+        else subtitle.textContent = 'Showing all 6 facilities in the database.';
+      }
+      var q = (nameQuery || '').toLowerCase();
+      for (var i = 0; i < cards.length; i++) {
+        var card = cards[i];
+        var name = (card.getAttribute('data-facility-name') || '').toLowerCase();
+        var tagsStr = card.getAttribute('data-facility-tags') || '';
+        var tags = tagsStr ? tagsStr.split('|').map(function(s) { return s.trim(); }) : [];
+        var nameMatch = !q || name.indexOf(q) !== -1;
+        var needsMatch = !needsList || needsList.length === 0 || needsList.some(function(n) { return tags.indexOf(n) !== -1; });
+        var show = nameMatch && needsMatch;
+        if (show) { card.classList.remove('hidden'); visibleCount++; } else { card.classList.add('hidden'); }
+      }
+      if (container) container.classList.remove('hidden');
+      if (noResults) noResults.classList.toggle('hidden', visibleCount > 0);
+    }
+    
+    function showAllResultsAndScroll() {
+      // Show results section and clear any filters so all cards are visible
+      var section = document.getElementById('search-results-section');
+      if (section) section.classList.remove('hidden');
 
-    function setTab(id) {
-      document.querySelectorAll('[id^="tab-"]').forEach(function(t) {
-        t.className = 'px-4 py-2 rounded-lg font-semibold text-sm transition ' + (t.id === id ? tabClassActive : tabClassInactive);
-      });
-      document.getElementById('panel-near').classList.toggle('hidden', id !== 'tab-near');
-      document.getElementById('panel-name').classList.toggle('hidden', id !== 'tab-name');
-      document.getElementById('panel-needs').classList.toggle('hidden', id !== 'tab-needs');
-      tabActive = id;
+      var cards = document.querySelectorAll('.facility-card');
+      for (var i = 0; i < cards.length; i++) cards[i].classList.remove('hidden');
+
+      var subtitle = document.getElementById('search-results-subtitle');
+      if (subtitle) subtitle.textContent = 'Showing all 6 facilities in the database.';
+      var noResults = document.getElementById('search-no-results');
+      if (noResults) noResults.classList.add('hidden');
+
+      if (section && section.scrollIntoView) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    document.getElementById('tab-near').addEventListener('click', function() { setTab('tab-near'); });
-    document.getElementById('tab-name').addEventListener('click', function() { setTab('tab-name'); });
-    document.getElementById('tab-needs').addEventListener('click', function() { setTab('tab-needs'); });
+    // 6 hardcoded demo facilities (used only for dynamic fallback / details links)
+    var FACILITIES = [
+      { id: 'meadowbrook', name: 'Meadowbrook Care Center', category: 'Memory Care', tags: ['Memory Care', 'Skilled Nursing', 'Infection Control Strong'], rating: 'Good', badgeClass: 'text-green-600 bg-green-100', image: 'https://images.unsplash.com/photo-1626315869436-d6781ba69d6e?w=500', address: '1201 Willow Park Dr, Houston, TX', notes: 'Strong infection control, but weekend staffing dips slightly.' },
+      { id: 'riverside', name: 'Riverside Living', category: 'Rehabilitation', tags: ['Rehabilitation', 'Skilled Nursing'], rating: 'Fair', badgeClass: 'text-yellow-700 bg-yellow-100', image: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=500', address: '455 Riverfront Ave, Austin, TX', notes: 'Great rehab program, average staffing stability.' },
+      { id: 'sunset', name: 'Sunset Gardens', category: 'Assisted Living', tags: ['Assisted Living'], rating: 'Review', badgeClass: 'text-orange-700 bg-orange-100', image: 'https://images.unsplash.com/photo-1586773860383-dab5f3bc1bcc?w=500', address: '88 Sunset Blvd, Dallas, TX', notes: 'Clean facility, limited skilled nursing coverage.' },
+      { id: 'hillside', name: 'Hillside Manor', category: 'Skilled Nursing', tags: ['Skilled Nursing', 'Infection Control Strong'], rating: 'Fair', badgeClass: 'text-yellow-700 bg-yellow-100', image: 'https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=500', address: '210 Ridgeway Ln, San Antonio, TX', notes: 'Solid clinical team, higher citation count last year.' },
+      { id: 'oakwood', name: 'Oakwood Senior', category: 'Memory Care', tags: ['Memory Care', 'Assisted Living'], rating: 'Good', badgeClass: 'text-green-600 bg-green-100', image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=500', address: '44 Oak Trail, College Station, TX', notes: 'Good overall performance with consistent staffing.' },
+      { id: 'pinecrest', name: 'Pinecrest Home', category: 'Hospice', tags: ['Hospice', 'Skilled Nursing'], rating: 'Good', badgeClass: 'text-green-600 bg-green-100', image: 'https://images.unsplash.com/photo-1631507623104-aa66944677aa?w=500', address: '900 Pine St, Chicago, IL', notes: 'Strong hospice services, excellent family communication.' }
+    ];
 
-    // Use my location (Closest to me)
-    document.getElementById('btn-geolocate').addEventListener('click', function() {
-      var status = document.getElementById('geo-status');
-      status.textContent = 'Getting location...';
-      if (!navigator.geolocation) {
-        status.textContent = 'Geolocation is not supported by your browser.';
-        return;
+    function filterFacilities(nameQuery, needsList) {
+      var list = FACILITIES.slice();
+      if (nameQuery) {
+        var q = nameQuery.toLowerCase();
+        list = list.filter(function(f) { return f.name.toLowerCase().indexOf(q) !== -1; });
       }
-      navigator.geolocation.getCurrentPosition(
-        function(pos) {
-          status.textContent = 'Location found. Redirecting to results...';
-          setTimeout(function() { window.location.href = 'results.html'; }, 800);
-        },
-        function() {
-          status.textContent = 'Location unavailable. Try again or allow access.';
-        }
-      );
-    });
+      if (needsList && needsList.length > 0) {
+        list = list.filter(function(f) {
+          return needsList.some(function(need) { return f.tags && f.tags.indexOf(need) !== -1; });
+        });
+      }
+      return list;
+    }
 
-    // By name: search -> go to results
-    document.getElementById('btn-name-search').addEventListener('click', function() {
-      var q = document.getElementById('name-query').value.trim();
-      window.location.href = 'results.html' + (q ? '?name=' + encodeURIComponent(q) : '');
-    });
-    document.getElementById('name-query').addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') document.getElementById('btn-name-search').click();
-    });
+    function matchLabel(facility, priorities) {
+      if (!priorities || priorities.length === 0) return { label: facility.rating || '—', class: facility.badgeClass || 'bg-slate-100 text-slate-700' };
+      var count = priorities.filter(function(p) { return facility.tags && facility.tags.indexOf(p) !== -1; }).length;
+      var pct = Math.round((count / priorities.length) * 100);
+      if (pct >= 80) return { label: 'Good', class: 'bg-green-100 text-green-700' };
+      if (pct >= 50) return { label: 'Fair', class: 'bg-yellow-100 text-yellow-700' };
+      return { label: 'Review', class: 'bg-orange-100 text-orange-700' };
+    }
 
-    // By needs: search -> go to results
-    document.getElementById('btn-needs-search').addEventListener('click', function() {
-      var needs = [];
-      document.querySelectorAll('.need-checkbox:checked').forEach(function(cb) { needs.push(cb.value); });
-      var qs = needs.length ? '?needs=' + encodeURIComponent(needs.join(',')) : '';
-      window.location.href = 'results.html' + qs;
-    });
-    document.getElementById('btn-needs-clear').addEventListener('click', function() {
-      document.querySelectorAll('.need-checkbox').forEach(function(cb) { cb.checked = false; });
-      document.querySelectorAll('.care-tile').forEach(function(t) {
-        t.classList.remove('tile-selected', 'bg-white', 'text-[#669966]', 'border-white');
-        t.classList.add('border-white/50', 'text-white');
-      });
-    });
+    function renderSearchResults(nameQuery, needsList) {
+      var list = filterFacilities(nameQuery, needsList);
+      var container = document.getElementById('search-results-container');
+      var noResults = document.getElementById('search-no-results');
+      var subtitle = document.getElementById('search-results-subtitle');
 
-    // Care type tiles: toggle selected state and sync with "By needs" checkboxes
-    document.querySelectorAll('.care-tile').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        this.classList.toggle('tile-selected');
-        this.classList.toggle('bg-white');
-        this.classList.toggle('text-[#669966]');
-        this.classList.toggle('border-white');
-        this.classList.toggle('border-white/50');
-        var value = this.getAttribute('data-care');
-        var checkbox = document.querySelector('.need-checkbox[value="' + value + '"]');
-        if (checkbox) checkbox.checked = this.classList.contains('tile-selected');
+      if (nameQuery) {
+        subtitle.textContent = 'Facilities whose name contains "' + nameQuery + '".';
+      } else if (needsList && needsList.length > 0) {
+        subtitle.textContent = 'Facilities that offer at least one of: ' + needsList.join(', ') + '.';
+      } else {
+        subtitle.textContent = 'Showing all 6 facilities in the database.';
+      }
+
+      var section = document.getElementById('search-results-section');
+      if (section) section.classList.remove('hidden');
+      applyFilter(nameQuery, needsList);
+      if (section && section.scrollIntoView) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function resetResultsToBlank() {
+      // Hide the results area and clear any card-level hidden state so the next search starts clean.
+      var section = document.getElementById('search-results-section');
+      if (section) section.classList.add('hidden');
+
+      var cards = document.querySelectorAll('.facility-card');
+      for (var i = 0; i < cards.length; i++) cards[i].classList.remove('hidden');
+
+      var subtitle = document.getElementById('search-results-subtitle');
+      if (subtitle) subtitle.textContent = 'Showing all 6 facilities in the database.';
+      var noResults = document.getElementById('search-no-results');
+      if (noResults) noResults.classList.add('hidden');
+    }
+
+    function setTab(id) {
+      var tabClassActive = 'px-4 py-2 rounded-lg font-semibold text-sm bg-green-600 text-white hover:bg-green-700 transition';
+      var tabClassInactive = 'px-4 py-2 rounded-lg font-semibold text-sm bg-slate-300 text-slate-800 hover:bg-slate-400 transition';
+      var tabs = document.querySelectorAll('[id^="tab-"]');
+      for (var i = 0; i < tabs.length; i++) {
+        tabs[i].className = tabs[i].id === id ? tabClassActive : tabClassInactive;
+      }
+      var panelNear = document.getElementById('panel-near');
+      var panelName = document.getElementById('panel-name');
+      var panelNeeds = document.getElementById('panel-needs');
+      var panelAll = document.getElementById('panel-all');
+      if (panelNear) panelNear.classList.toggle('hidden', id !== 'tab-near');
+      if (panelName) panelName.classList.toggle('hidden', id !== 'tab-name');
+      if (panelNeeds) panelNeeds.classList.toggle('hidden', id !== 'tab-needs');
+      if (panelAll) panelAll.classList.toggle('hidden', id !== 'tab-all');
+
+      // Requirement: switching search methods resets results to blank,
+      // except when switching to "All results".
+      if (id !== 'tab-all') resetResultsToBlank();
+    }
+
+    function initSearch() {
+      var tabNear = document.getElementById('tab-near');
+      var tabName = document.getElementById('tab-name');
+      var tabNeeds = document.getElementById('tab-needs');
+      var tabAll = document.getElementById('tab-all');
+      var btnClearResults = document.getElementById('btn-clear-results');
+      var btnGeolocate = document.getElementById('btn-geolocate');
+      var btnNameSearch = document.getElementById('btn-name-search');
+      var nameQuery = document.getElementById('name-query');
+      var btnNeedsSearch = document.getElementById('btn-needs-search');
+      var btnNeedsClear = document.getElementById('btn-needs-clear');
+
+      if (tabNear) tabNear.addEventListener('click', function() { setTab('tab-near'); });
+      if (tabName) tabName.addEventListener('click', function() { setTab('tab-name'); });
+      if (tabNeeds) tabNeeds.addEventListener('click', function() { setTab('tab-needs'); });
+      if (tabAll) tabAll.addEventListener('click', function() { setTab('tab-all'); showAllResultsAndScroll(); });
+
+      if (btnClearResults) btnClearResults.addEventListener('click', function() { showAllResultsAndScroll(); });
+
+      if (btnGeolocate) {
+        btnGeolocate.addEventListener('click', function() {
+          var status = document.getElementById('geo-status');
+          if (status) status.textContent = 'Getting location...';
+          if (!navigator.geolocation) {
+            if (status) status.textContent = 'Geolocation is not supported by your browser.';
+            return;
+          }
+          navigator.geolocation.getCurrentPosition(
+            function() {
+              if (status) status.textContent = 'Location found. Showing all facilities below.';
+              renderSearchResults('', []);
+            },
+            function() {
+              if (status) status.textContent = 'Location unavailable. Try again or allow access.';
+            }
+          );
+        });
+      }
+
+      if (btnNameSearch) btnNameSearch.addEventListener('click', function() {
+        var q = nameQuery ? nameQuery.value.trim() : '';
+        renderSearchResults(q, []);
       });
-    });
-    document.querySelectorAll('.need-checkbox').forEach(function(cb) {
-      cb.addEventListener('change', function() {
-        var tile = document.querySelector('.care-tile[data-care="' + this.value + '"]');
-        if (!tile) return;
-        var selected = tile.classList.contains('tile-selected');
-        if (this.checked !== selected) {
-          tile.classList.toggle('tile-selected');
-          tile.classList.toggle('bg-white');
-          tile.classList.toggle('text-[#669966]');
-          tile.classList.toggle('border-white');
-          tile.classList.toggle('border-white/50');
-        }
-      });
-    });
+      if (nameQuery) {
+        nameQuery.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter') {
+            var q = nameQuery.value.trim();
+            renderSearchResults(q, []);
+          }
+        });
+      }
+
+      if (btnNeedsSearch) {
+        btnNeedsSearch.addEventListener('click', function() {
+          var needs = [];
+          var checkboxes = document.querySelectorAll('.need-checkbox:checked');
+          for (var j = 0; j < checkboxes.length; j++) needs.push(checkboxes[j].value);
+          renderSearchResults('', needs);
+        });
+      }
+      if (btnNeedsClear) {
+        btnNeedsClear.addEventListener('click', function() {
+          var checkboxes = document.querySelectorAll('.need-checkbox');
+          for (var k = 0; k < checkboxes.length; k++) checkboxes[k].checked = false;
+        });
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initSearch);
+    } else {
+      initSearch();
+    }
   </script>
 </body>
 </html>
