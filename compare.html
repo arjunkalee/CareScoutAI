@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CareScout AI – Compare</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800">
+
+  <!-- NAV -->
+  <nav class="relative flex items-center px-6 py-5 border-b border-slate-100 bg-white">
+
+    <!-- Logo -->
+    <a href="index.html" class="flex items-center gap-3">
+      <img 
+        src="careScoutAILogo.png" 
+        alt="CareScout" 
+        class="h-12 w-auto object-contain"
+      />
+    </a>
+
+    <!-- Center Nav -->
+    <div class="absolute left-1/2 -translate-x-1/2 hidden md:flex gap-10 text-sm font-medium text-slate-600">
+      <a href="search.html" class="hover:text-green-600">Search</a>
+      <a href="learn.html" class="hover:text-green-600">Learn</a>
+      <a href="results.html" class="hover:text-green-600">Results</a>
+      <a href="compare.html" class="text-green-600">Compare</a>
+    </div>
+
+  </nav>
+
+  <!-- MAIN -->
+  <main class="max-w-4xl mx-auto px-6 py-24 text-center">
+
+    <span class="inline-block mb-4 text-xs font-bold tracking-widest uppercase text-green-600">
+      Compare
+    </span>
+
+    <h1 class="text-4xl font-bold text-slate-900 mb-6">
+      Facility comparison is coming soon
+    </h1>
+
+    <p class="text-slate-600 max-w-xl mx-auto mb-10">
+      CareScout Compare will allow side-by-side evaluation of staffing levels,
+      safety trends, and inspection history—so families can make confident,
+      evidence-based decisions.
+    </p>
+
+    <div class="flex justify-center gap-4">
+      <a
+        href="search.html"
+        class="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition"
+      >
+        Start a search
+      </a>
+      <a
+        href="results.html"
+        class="px-6 py-3 border border-slate-300 text-slate-700 font-semibold rounded-lg hover:bg-slate-100 transition"
+      >
+        View results
+      </a>
+    </div>
+
+  </main>
+
+</body>
+</html>

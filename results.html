@@ -11,28 +11,36 @@
 </head>
 <body class="bg-slate-50 text-slate-800">
 
-    <nav class="flex items-center justify-between px-6 py-4 bg-white border-b border-slate-100">
-        <div class="flex items-center gap-2">
-            <a href="index.html" class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold">C</div>
-                <span class="font-bold text-xl tracking-tight text-slate-900">CareScout</span>
-            </a>
-        </div>
-        <div class="hidden md:flex gap-8 text-sm font-medium text-slate-600">
-            <a href="search.html" class="hover:text-blue-600">Search</a>
-            <a href="results.html" class="text-blue-600">Results</a>
-            <a href="#" class="hover:text-blue-600">Compare</a>
-        </div>
-        <a href="#" class="px-4 py-2 bg-slate-900 text-white text-sm font-medium rounded hover:bg-slate-800 transition">Start</a>
-    </nav>
+    <nav class="relative flex items-center px-6 py-4 border-b border-slate-100 bg-white">
 
-    <header class="bg-blue-500 text-white py-16 text-center px-6">
-        <span class="text-blue-200 uppercase text-xs font-bold tracking-widest">Results</span>
+        <!-- Left: Logo -->
+        <a href="index.html" class="flex items-center gap-3">
+            <img 
+  src="careScoutAILogo.png" 
+  alt="CareScout" 
+  class="h-12 w-auto object-contain"
+/>
+
+        </a>
+
+        <!-- Center: Navigation -->
+        <div class="absolute left-1/2 -translate-x-1/2 hidden md:flex gap-10 text-sm font-medium text-slate-600">
+            <a href="search.html" class="hover:text-green-600">Search</a>
+            <a href="learn.html" class="hover:text-green-600">Learn</a>
+            <a href="results.html" class="hover:text-green-600">Results</a>
+            <a href="compare.html" class="hover:text-green-600">Compare</a>
+        </div>
+
+        </nav>
+
+
+    <header class="bg-green-500 text-white py-16 text-center px-6">
+        <span class="text-green-200 uppercase text-xs font-bold tracking-widest">Results</span>
         <h1 class="text-3xl md:text-4xl font-bold mt-2 mb-4">Your facility match</h1>
-        <p class="text-blue-100 max-w-lg mx-auto mb-8">Here is what we found. Look closer at the details that matter most to you.</p>
+        <p class="text-green-100 max-w-lg mx-auto mb-8">Here is what we found. Look closer at the details that matter most to you.</p>
         <div class="flex justify-center gap-4">
-            <button class="bg-white text-blue-600 px-6 py-2 rounded font-semibold text-sm">Explore</button>
-            <button class="bg-blue-600 border border-blue-400 text-white px-6 py-2 rounded font-semibold text-sm hover:bg-blue-700">Refine</button>
+            <button class="bg-white text-green-600 px-6 py-2 rounded font-semibold text-sm">Explore</button>
+            <button class="bg-green-600 border border-green-400 text-white px-6 py-2 rounded font-semibold text-sm hover:bg-green-700">Refine</button>
         </div>
     </header>
 
@@ -46,8 +54,8 @@
         <div class="grid md:grid-cols-3 gap-8">
             
             <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition border border-slate-100 p-6 flex flex-col items-center text-center">
-                <div class="w-full h-40 bg-slate-100 rounded-lg mb-4 flex items-center justify-center text-slate-300">
-                    <i class="fa-regular fa-image text-3xl"></i>
+                <div class="w-full h-40 rounded-lg mb-4 overflow-hidden bg-slate-100">
+                    <img src="https://images.unsplash.com/photo-1626315869436-d6781ba69d6e?w=400" alt="Meadowbrook Care hospital exterior" class="w-full h-full object-cover">
                 </div>
                 <h3 class="font-bold text-lg text-slate-900">Meadowbrook Care</h3>
                 <span class="text-xs text-slate-500 mb-4">Memory Care</span>
@@ -58,8 +66,8 @@
             </div>
 
             <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition border border-slate-100 p-6 flex flex-col items-center text-center">
-                <div class="w-full h-40 bg-slate-100 rounded-lg mb-4 flex items-center justify-center text-slate-300">
-                    <i class="fa-regular fa-image text-3xl"></i>
+                <div class="w-full h-40 rounded-lg mb-4 overflow-hidden bg-slate-100">
+                    <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=400" alt="Riverside Living hospital exterior" class="w-full h-full object-cover">
                 </div>
                 <h3 class="font-bold text-lg text-slate-900">Riverside Living</h3>
                 <span class="text-xs text-slate-500 mb-4">Rehabilitation</span>
@@ -70,8 +78,8 @@
             </div>
 
             <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition border border-slate-100 p-6 flex flex-col items-center text-center">
-                <div class="w-full h-40 bg-slate-100 rounded-lg mb-4 flex items-center justify-center text-slate-300">
-                    <i class="fa-regular fa-image text-3xl"></i>
+                <div class="w-full h-40 rounded-lg mb-4 overflow-hidden bg-slate-100">
+                    <img src="https://images.unsplash.com/photo-1586773860383-dab5f3bc1bcc?w=400" alt="Sunset Gardens hospital exterior" class="w-full h-full object-cover">
                 </div>
                 <h3 class="font-bold text-lg text-slate-900">Sunset Gardens</h3>
                 <span class="text-xs text-slate-500 mb-4">Assisted Living</span>
@@ -82,8 +90,8 @@
             </div>
 
             <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition border border-slate-100 p-6 flex flex-col items-center text-center">
-                <div class="w-full h-40 bg-slate-100 rounded-lg mb-4 flex items-center justify-center text-slate-300">
-                    <i class="fa-regular fa-image text-3xl"></i>
+                <div class="w-full h-40 rounded-lg mb-4 overflow-hidden bg-slate-100">
+                    <img src="https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=400" alt="Hillside Manor hospital exterior" class="w-full h-full object-cover">
                 </div>
                 <h3 class="font-bold text-lg text-slate-900">Hillside Manor</h3>
                 <span class="text-xs text-slate-500 mb-4">Skilled Nursing</span>
@@ -94,8 +102,8 @@
             </div>
 
             <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition border border-slate-100 p-6 flex flex-col items-center text-center">
-                <div class="w-full h-40 bg-slate-100 rounded-lg mb-4 flex items-center justify-center text-slate-300">
-                    <i class="fa-regular fa-image text-3xl"></i>
+                <div class="w-full h-40 rounded-lg mb-4 overflow-hidden bg-slate-100">
+                    <img src="https://images.unsplash.com/photo-1764885415563-8b868745e9e2?w=400" alt="Oakwood Senior hospital exterior" class="w-full h-full object-cover">
                 </div>
                 <h3 class="font-bold text-lg text-slate-900">Oakwood Senior</h3>
                 <span class="text-xs text-slate-500 mb-4">Memory Care</span>
@@ -106,8 +114,8 @@
             </div>
 
             <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition border border-slate-100 p-6 flex flex-col items-center text-center">
-                <div class="w-full h-40 bg-slate-100 rounded-lg mb-4 flex items-center justify-center text-slate-300">
-                    <i class="fa-regular fa-image text-3xl"></i>
+                <div class="w-full h-40 rounded-lg mb-4 overflow-hidden bg-slate-100">
+                    <img src="https://images.unsplash.com/photo-1631507623104-aa66944677aa?w=400" alt="Pinecrest Home hospital exterior" class="w-full h-full object-cover">
                 </div>
                 <h3 class="font-bold text-lg text-slate-900">Pinecrest Home</h3>
                 <span class="text-xs text-slate-500 mb-4">Hospice</span>

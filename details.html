@@ -11,38 +11,49 @@
 </head>
 <body class="bg-white text-slate-800">
 
-    <nav class="flex items-center justify-between px-6 py-4 border-b border-slate-100">
-        <div class="flex items-center gap-2">
-            <a href="index.html" class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold">C</div>
-                <span class="font-bold text-xl tracking-tight text-slate-900">CareScout</span>
-            </a>
-        </div>
-        <div class="hidden md:flex gap-8 text-sm font-medium text-slate-600">
-            <a href="search.html" class="hover:text-blue-600">Search</a>
-            <a href="results.html" class="text-blue-600">Results</a>
-            <a href="#" class="hover:text-blue-600">Compare</a>
-        </div>
-        <a href="#" class="px-4 py-2 bg-slate-900 text-white text-sm font-medium rounded hover:bg-slate-800 transition">Start</a>
-    </nav>
+    <nav class="relative flex items-center px-6 py-4 border-b border-slate-100 bg-white">
 
-    <header class="bg-blue-500 text-white py-16">
+        <!-- Left: Logo -->
+        <a href="index.html" class="flex items-center gap-3">
+            <img 
+  src="careScoutAILogo.png" 
+  alt="CareScout" 
+  class="h-12 w-auto object-contain"
+/>
+
+        </a>
+
+        <!-- Center: Navigation -->
+        <div class="absolute left-1/2 -translate-x-1/2 hidden md:flex gap-10 text-sm font-medium text-slate-600">
+            <a href="search.html" class="hover:text-green-600">Search</a>
+            <a href="learn.html" class="hover:text-green-600">Learn</a>
+            <a href="results.html" class="hover:text-green-600">Results</a>
+            <a href="compare.html" class="hover:text-green-600">Compare</a>
+        </div>
+
+        </nav>
+
+
+    <header class="bg-green-500 text-white py-16">
         <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-8 items-center">
             <div>
                 <h1 class="text-4xl font-bold mb-4">Meadowbrook Care Center</h1>
-                <div class="flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-wide text-blue-100 mb-6">
-                    <span class="border border-blue-300/30 px-3 py-1 rounded-full">Long term care</span>
-                    <span class="border border-blue-300/30 px-3 py-1 rounded-full">Skilled Nursing</span>
-                    <span class="border border-blue-300/30 px-3 py-1 rounded-full">Rehabilitation Services</span>
+                <div class="flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-wide text-green-100 mb-6">
+                    <span class="border border-green-300/30 px-3 py-1 rounded-full">Long term care</span>
+                    <span class="border border-green-300/30 px-3 py-1 rounded-full">Skilled Nursing</span>
+                    <span class="border border-green-300/30 px-3 py-1 rounded-full">Rehabilitation Services</span>
                 </div>
             </div>
-            <div class="text-blue-100 text-sm md:text-right">
-                <p class="max-w-md ml-auto">Located in Springfield, this facility serves the region with 120 licensed beds. The center maintains a mixed record on staffing consistency and safety metrics that warrant careful review.</p>
+            <div class="rounded-xl overflow-hidden shadow-lg h-48 md:h-64">
+                <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800" alt="Meadowbrook Care Center facility" class="w-full h-full object-cover">
             </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 mt-6">
+            <p class="text-green-100 text-sm max-w-2xl">Located in Springfield, this facility serves the region with 120 licensed beds. The center maintains a mixed record on staffing consistency and safety metrics that warrant careful review.</p>
         </div>
     </header>
 
-    <section class="bg-blue-50 py-16 px-6">
+    <section class="bg-green-50 py-16 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12">
                 <h2 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Reality</h2>
@@ -51,34 +62,34 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-xl border border-blue-100 shadow-sm">
+                <div class="bg-white p-6 rounded-xl border border-green-100 shadow-sm">
                     <div class="h-32 bg-slate-100 rounded-lg mb-4 flex items-center justify-center">
                         <i class="fa-regular fa-calendar-xmark text-slate-300 text-3xl"></i>
                     </div>
                     <span class="text-xs font-bold text-slate-400 uppercase">Concern</span>
                     <h4 class="font-bold text-lg text-slate-900 mb-2">Staffing on weekends</h4>
                     <p class="text-sm text-slate-600 mb-4">Reduced nursing presence during critical days.</p>
-                    <a href="#" class="text-blue-600 text-sm font-medium hover:underline">Learn &rarr;</a>
+                    <a href="#" class="text-green-600 text-sm font-medium hover:underline">Learn &rarr;</a>
                 </div>
 
-                <div class="bg-white p-6 rounded-xl border border-blue-100 shadow-sm">
+                <div class="bg-white p-6 rounded-xl border border-green-100 shadow-sm">
                     <div class="h-32 bg-slate-100 rounded-lg mb-4 flex items-center justify-center">
                          <i class="fa-solid fa-shield-virus text-slate-300 text-3xl"></i>
                     </div>
                     <span class="text-xs font-bold text-slate-400 uppercase">Strength</span>
                     <h4 class="font-bold text-lg text-slate-900 mb-2">Infection control measures</h4>
                     <p class="text-sm text-slate-600 mb-4">Consistent protocols maintained across all units.</p>
-                    <a href="#" class="text-blue-600 text-sm font-medium hover:underline">Learn &rarr;</a>
+                    <a href="#" class="text-green-600 text-sm font-medium hover:underline">Learn &rarr;</a>
                 </div>
 
-                <div class="bg-white p-6 rounded-xl border border-blue-100 shadow-sm">
+                <div class="bg-white p-6 rounded-xl border border-green-100 shadow-sm">
                     <div class="h-32 bg-slate-100 rounded-lg mb-4 flex items-center justify-center">
                          <i class="fa-solid fa-file-medical text-slate-300 text-3xl"></i>
                     </div>
                     <span class="text-xs font-bold text-slate-400 uppercase">Trend</span>
                     <h4 class="font-bold text-lg text-slate-900 mb-2">Safety citations show declining trajectory</h4>
                     <p class="text-sm text-slate-600 mb-4">Recent inspections reveal worsening compliance issues.</p>
-                    <a href="#" class="text-blue-600 text-sm font-medium hover:underline">Learn &rarr;</a>
+                    <a href="#" class="text-green-600 text-sm font-medium hover:underline">Learn &rarr;</a>
                 </div>
             </div>
         </div>
@@ -109,8 +120,8 @@
                 </div>
             </div>
 
-            <div class="bg-slate-100 rounded-xl h-64 flex items-center justify-center">
-                <i class="fa-regular fa-chart-bar text-4xl text-slate-300"></i>
+            <div class="rounded-xl h-64 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=400" alt="Facility overview" class="w-full h-full object-cover">
             </div>
 
              <div class="bg-slate-50 p-6 rounded-xl h-64 flex flex-col justify-between">

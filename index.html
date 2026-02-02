@@ -11,32 +11,41 @@
 </head>
 <body class="bg-white text-slate-800">
 
-    <nav class="flex items-center justify-between px-6 py-4 border-b border-slate-100">
-        <div class="flex items-center gap-2">
-            <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold">C</div>
-            <span class="font-bold text-xl tracking-tight">CareScout</span>
-        </div>
-        <div class="hidden md:flex gap-8 text-sm font-medium text-slate-600">
-            <a href="search.html" class="hover:text-blue-600">Search</a>
-            <a href="results.html" class="hover:text-blue-600">Results</a>
-            <a href="#" class="hover:text-blue-600">Compare</a>
-            <a href="#" class="hover:text-blue-600">Learn</a>
-        </div>
-        <a href="search.html" class="px-4 py-2 bg-slate-900 text-white text-sm font-medium rounded hover:bg-slate-800 transition">Start</a>
-    </nav>
+    <nav class="relative flex items-center px-6 py-4 border-b border-slate-100 bg-white">
 
-    <header class="bg-blue-500 text-white">
+  <!-- Left: Logo -->
+  <a href="index.html" class="flex items-center gap-3">
+    <img 
+  src="careScoutAILogo.png" 
+  alt="CareScout" 
+  class="h-12 w-auto object-contain"
+/>
+
+  </a>
+
+  <!-- Center: Navigation -->
+  <div class="absolute left-1/2 -translate-x-1/2 hidden md:flex gap-10 text-sm font-medium text-slate-600">
+    <a href="search.html" class="hover:text-green-600">Search</a>
+    <a href="learn.html" class="hover:text-green-600">Learn</a>
+    <a href="results.html" class="hover:text-green-600">Results</a>
+    <a href="compare.html" class="hover:text-green-600">Compare</a>
+  </div>
+
+</nav>
+
+
+    <header class="bg-green-500 text-white">
         <div class="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
             <div>
                 <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">Find the right nursing home with real data</h1>
-                <p class="text-blue-100 text-lg mb-8 max-w-md">Federal transparency records transformed into clear intelligence. Discover staffing patterns, safety trends, and hidden risks.</p>
+                <p class="text-green-100 text-lg mb-8 max-w-md">Federal transparency records transformed into clear intelligence. Discover staffing patterns, safety trends, and hidden risks.</p>
                 <div class="flex gap-4">
-                    <a href="search.html" class="px-6 py-3 bg-white text-blue-600 font-semibold rounded shadow hover:bg-blue-50 transition">Search</a>
-                    <button class="px-6 py-3 border border-blue-300 text-white font-semibold rounded hover:bg-blue-600 transition">Learn more</button>
+                    <a href="search.html" class="px-6 py-3 bg-white text-green-600 font-semibold rounded shadow hover:bg-green-50 transition">Search</a>
+                    <button class="px-6 py-3 border border-green-300 text-white font-semibold rounded hover:bg-green-600 transition">Learn more</button>
                 </div>
             </div>
-            <div class="bg-blue-400/30 rounded-xl h-80 flex items-center justify-center border-2 border-blue-300/30 border-dashed">
-                <i class="fa-regular fa-image text-6xl text-blue-200"></i>
+            <div class="rounded-xl h-80 overflow-hidden shadow-lg">
+                <img src="data:image/jpeg;base64,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" alt="Elderly couple or family" class="w-full h-full object-cover">
             </div>
         </div>
     </header>
@@ -53,28 +62,28 @@
                 <div class="h-40 bg-slate-200 rounded-lg mb-6 flex items-center justify-center">
                     <i class="fa-solid fa-map-location-dot text-4xl text-slate-400"></i>
                 </div>
-                <span class="text-xs font-bold text-blue-600 uppercase">First</span>
+                <span class="text-xs font-bold text-green-600 uppercase">First</span>
                 <h4 class="text-xl font-bold mt-2 mb-2">Search your area</h4>
                 <p class="text-slate-600 text-sm mb-4">Tell us where you're looking for care.</p>
-                <a href="search.html" class="text-blue-600 font-semibold text-sm hover:underline">Go &rarr;</a>
+                <a href="search.html" class="text-green-600 font-semibold text-sm hover:underline">Go &rarr;</a>
             </div>
             <div class="bg-slate-50 p-8 rounded-xl">
                 <div class="h-40 bg-slate-200 rounded-lg mb-6 flex items-center justify-center">
                     <i class="fa-solid fa-server text-4xl text-slate-400"></i>
                 </div>
-                <span class="text-xs font-bold text-blue-600 uppercase">Second</span>
+                <span class="text-xs font-bold text-green-600 uppercase">Second</span>
                 <h4 class="text-xl font-bold mt-2 mb-2">We analyze data</h4>
                 <p class="text-slate-600 text-sm mb-4">Our system parses thousands of records.</p>
-                <a href="#" class="text-blue-600 font-semibold text-sm hover:underline">View &rarr;</a>
+                <a href="#" class="text-green-600 font-semibold text-sm hover:underline">View &rarr;</a>
             </div>
             <div class="bg-slate-50 p-8 rounded-xl">
                 <div class="h-40 bg-slate-200 rounded-lg mb-6 flex items-center justify-center">
                     <i class="fa-solid fa-chart-pie text-4xl text-slate-400"></i>
                 </div>
-                <span class="text-xs font-bold text-blue-600 uppercase">Third</span>
+                <span class="text-xs font-bold text-green-600 uppercase">Third</span>
                 <h4 class="text-xl font-bold mt-2 mb-2">Get clear insights</h4>
                 <p class="text-slate-600 text-sm mb-4">Compare facilities with real data.</p>
-                <a href="results.html" class="text-blue-600 font-semibold text-sm hover:underline">Start &rarr;</a>
+                <a href="results.html" class="text-green-600 font-semibold text-sm hover:underline">Start &rarr;</a>
             </div>
         </div>
     </section>
@@ -88,22 +97,22 @@
 
         <div class="grid md:grid-cols-3 gap-8">
             <div class="group">
-                <div class="h-64 bg-slate-100 rounded-lg mb-6 flex items-center justify-center group-hover:bg-slate-200 transition">
-                    <i class="fa-regular fa-image text-4xl text-slate-300"></i>
+                <div class="h-64 rounded-lg mb-6 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600" alt="Healthcare data" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                 </div>
                 <h4 class="font-bold text-lg mb-2">Make decisions with real evidence</h4>
                 <p class="text-slate-600 text-sm">Stop guessing about staffing and safety.</p>
             </div>
             <div class="group">
-                <div class="h-64 bg-slate-100 rounded-lg mb-6 flex items-center justify-center group-hover:bg-slate-200 transition">
-                    <i class="fa-solid fa-arrow-trend-down text-4xl text-slate-300"></i>
+                <div class="h-64 rounded-lg mb-6 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=600" alt="Hospital care" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                 </div>
                 <h4 class="font-bold text-lg mb-2">Weekend shortages matter</h4>
                 <p class="text-slate-600 text-sm">Discover what ratings hide about off-hours.</p>
             </div>
             <div class="group">
-                <div class="h-64 bg-slate-100 rounded-lg mb-6 flex items-center justify-center group-hover:bg-slate-200 transition">
-                    <i class="fa-solid fa-scale-balanced text-4xl text-slate-300"></i>
+                <div class="h-64 rounded-lg mb-6 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?w=600" alt="Compare facilities" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
                 </div>
                 <h4 class="font-bold text-lg mb-2">Compare accurately</h4>
                 <p class="text-slate-600 text-sm">Compare what actually matters to you.</p>
