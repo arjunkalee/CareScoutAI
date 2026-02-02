@@ -207,13 +207,74 @@
 
     <script>
     // Same 6 facilities as search.html (needs = tags for details logic)
+    // Added demo "has / doesn't have" lists for the table when no priorities are provided.
     var FACILITIES = [
-        { id: 'meadowbrook', name: 'Meadowbrook Care Center', match: 92, needs: ['Memory Care', 'Skilled Nursing', 'Infection Control Strong'], image: 'https://images.unsplash.com/photo-1626315869436-d6781ba69d6e?w=800', location: 'Houston', description: '1201 Willow Park Dr, Houston, TX. Strong infection control, but weekend staffing dips slightly.' },
-        { id: 'riverside', name: 'Riverside Living', match: 78, needs: ['Rehabilitation', 'Skilled Nursing'], image: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=800', location: 'Austin', description: '455 Riverfront Ave, Austin, TX. Great rehab program, average staffing stability.' },
-        { id: 'sunset', name: 'Sunset Gardens', match: 64, needs: ['Assisted Living'], image: 'https://images.unsplash.com/photo-1586773860383-dab5f3bc1bcc?w=800', location: 'Dallas', description: '88 Sunset Blvd, Dallas, TX. Clean facility, limited skilled nursing coverage.' },
-        { id: 'hillside', name: 'Hillside Manor', match: 73, needs: ['Skilled Nursing', 'Infection Control Strong'], image: 'https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=800', location: 'San Antonio', description: '210 Ridgeway Ln, San Antonio, TX. Solid clinical team, higher citation count last year.' },
-        { id: 'oakwood', name: 'Oakwood Senior', match: 86, needs: ['Memory Care', 'Assisted Living'], image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800', location: 'College Station', description: '44 Oak Trail, College Station, TX. Good overall performance with consistent staffing.' },
-        { id: 'pinecrest', name: 'Pinecrest Home', match: 81, needs: ['Hospice', 'Skilled Nursing'], image: 'https://images.unsplash.com/photo-1631507623104-aa66944677aa?w=800', location: 'Chicago', description: '900 Pine St, Chicago, IL. Strong hospice services, excellent family communication.' }
+        {
+            id: 'meadowbrook',
+            name: 'Meadowbrook Care Center',
+            match: 92,
+            needs: ['Memory Care', 'Skilled Nursing', 'Infection Control Strong'],
+            demoHas: ['Memory care wing', 'Wander-safe secured unit', 'On-site skilled nursing (24/7)', 'Strong infection control protocols'],
+            demoDont: ['On-site dialysis', 'Private rooms for every resident', 'Dedicated rehab gym'],
+            image: 'https://images.unsplash.com/photo-1626315869436-d6781ba69d6e?w=800',
+            location: 'Houston',
+            description: '1201 Willow Park Dr, Houston, TX. Strong infection control, but weekend staffing dips slightly.'
+        },
+        {
+            id: 'riverside',
+            name: 'Riverside Living',
+            match: 78,
+            needs: ['Rehabilitation', 'Skilled Nursing'],
+            demoHas: ['Rehab-focused therapy program', 'PT/OT 5–6 days per week', 'Skilled nursing coverage', 'Care plan reviews weekly'],
+            demoDont: ['Dedicated memory care wing', 'Secured wander-safe unit', 'In-house hospice team'],
+            image: 'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=800',
+            location: 'Austin',
+            description: '455 Riverfront Ave, Austin, TX. Great rehab program, average staffing stability.'
+        },
+        {
+            id: 'sunset',
+            name: 'Sunset Gardens',
+            match: 64,
+            needs: ['Assisted Living'],
+            demoHas: ['Assisted living apartments', 'Daily social & community activities', 'Medication management', 'Family visitation-friendly hours'],
+            demoDont: ['Skilled nursing (high-acuity)', 'Complex wound care team', 'On-site rehabilitation gym'],
+            image: 'https://images.unsplash.com/photo-1586773860383-dab5f3bc1bcc?w=800',
+            location: 'Dallas',
+            description: '88 Sunset Blvd, Dallas, TX. Clean facility, limited skilled nursing coverage.'
+        },
+        {
+            id: 'hillside',
+            name: 'Hillside Manor',
+            match: 73,
+            needs: ['Skilled Nursing', 'Infection Control Strong'],
+            demoHas: ['Skilled nursing unit', 'Infection control program', 'Fall-risk monitoring', 'On-call physician coverage'],
+            demoDont: ['Dedicated memory care wing', 'Large group activities calendar', 'Private rooms for every resident'],
+            image: 'https://images.unsplash.com/photo-1587351021759-3e566b6af7cc?w=800',
+            location: 'San Antonio',
+            description: '210 Ridgeway Ln, San Antonio, TX. Solid clinical team, higher citation count last year.'
+        },
+        {
+            id: 'oakwood',
+            name: 'Oakwood Senior',
+            match: 86,
+            needs: ['Memory Care', 'Assisted Living'],
+            demoHas: ['Memory care support', 'Active senior activities', 'Assisted living options', 'Family updates & care coordination'],
+            demoDont: ['On-site dialysis', 'Complex rehab (intensive PT/OT)', 'In-house hospice team'],
+            image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800',
+            location: 'College Station',
+            description: '44 Oak Trail, College Station, TX. Good overall performance with consistent staffing.'
+        },
+        {
+            id: 'pinecrest',
+            name: 'Pinecrest Home',
+            match: 81,
+            needs: ['Hospice', 'Skilled Nursing'],
+            demoHas: ['Hospice-friendly care planning', 'Comfort-focused nursing support', 'Family communication practices', 'Skilled nursing coverage'],
+            demoDont: ['Dedicated rehab gym', 'Memory care secured unit', 'Assisted living apartments'],
+            image: 'https://images.unsplash.com/photo-1631507623104-aa66944677aa?w=800',
+            location: 'Chicago',
+            description: '900 Pine St, Chicago, IL. Strong hospice services, excellent family communication.'
+        }
     ];
 
     function getDetailsParams() {
@@ -260,6 +321,9 @@
         } else {
             // No priorities passed in URL: show a per-facility "fake" match score.
             matchPct = (typeof facility.match === 'number') ? facility.match : 80;
+            // Fill the table with demo data so it isn't blank.
+            hasList = (facility.demoHas || []).slice();
+            dontHaveList = (facility.demoDont || []).slice();
         }
 
         document.getElementById('details-match-pct').textContent = matchPct + '%';
